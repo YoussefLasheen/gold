@@ -26,75 +26,80 @@ class _MainScreenState extends State<MainScreen> {
     timeago.setLocaleMessages('ar', timeago.ArMessages()); // Add french messages
     return Scaffold(
       backgroundColor:const  Color(0xFF142e1a),
-      body: SingleChildScrollView(
-        child: FutureBuilder<RatesDerivatives>(
-          future: futureAlbum,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Placeholder(
-                      fallbackHeight: 300,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        CaratPricing(data: snapshot.data!),
-                        SizedBox(height: 10,),
-                        Row(
-                          children: [
-                            Expanded(child: PriceCard(title: "سعر الأونصه",price: snapshot.data!.XAUUSD, icon: Icon(FontAwesomeIcons.coins, color: Color(0xFFCCA653),),)),
-                            Expanded(child: PriceCard(title: "سعر الدولار",price: snapshot.data!.rates.USDEGP, icon: Icon(FontAwesomeIcons.dollarSign, color: Colors.green),)),
-                          ],
-                        ),
-                        
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24.0),
+      body: Center(
+        child: SingleChildScrollView(
+          child: FutureBuilder<RatesDerivatives>(
+            future: futureAlbum,
+            builder: (context, snapshot) {
+              if(snapshot.connectionState == ConnectionState.waiting){
+                return Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.hasData) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Placeholder(
+                        fallbackHeight: 300,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          CaratPricing(data: snapshot.data!),
+                          SizedBox(height: 10,),
+                          Row(
+                            children: [
+                              Expanded(child: PriceCard(title: "سعر الأونصه",price: snapshot.data!.XAUUSD, icon: Icon(FontAwesomeIcons.coins, color: Color(0xFFCCA653),),)),
+                              Expanded(child: PriceCard(title: "سعر الدولار",price: snapshot.data!.rates.USDEGP, icon: Icon(FontAwesomeIcons.dollarSign, color: Colors.green),)),
+                            ],
+                          ),
+                          
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24.0),
+                                ),
+                                backgroundColor: Colors.green
                               ),
-                              backgroundColor: Colors.green
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                futureAlbum = fetchRates();
-                              });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: const Text('تحديث'),
+                              onPressed: () {
+                                setState(() {
+                                  futureAlbum = fetchRates();
+                                });
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: const Text('تحديث'),
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text('تم التحديث ${timeago.format(snapshot.data!.rates.timestamp, locale: 'ar')}', style: TextStyle(color: Colors.white),),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('تم التحديث ${timeago.format(snapshot.data!.rates.timestamp, locale: 'ar')}', style: TextStyle(color: Colors.white),),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
 
-            return const CircularProgressIndicator();
-          },
+              return const CircularProgressIndicator();
+            },
+          ),
         ),
       ),
     );
