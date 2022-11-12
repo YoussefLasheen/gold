@@ -52,6 +52,7 @@ class _MainScreenState extends State<MainScreen> {
                         PriceCard(price: snapshot.data!.gold24k, icon: Icon(FontAwesomeIcons.coins, color: Color(0xFFFFD700),),),
                         PriceCard(price: snapshot.data!.gold21k, icon: Icon(FontAwesomeIcons.coins, color: Color(0xFFDDB637),),),
                         PriceCard(price: snapshot.data!.gold18k, icon: Icon(FontAwesomeIcons.coins, color: Color(0xFFCCA653),),),
+                        PriceCard(price: snapshot.data!.XAUUSD, icon: Icon(FontAwesomeIcons.coins, color: Color(0xFFCCA653),),),
                         PriceCard(price: snapshot.data!.rates.USDEGP, icon: Icon(FontAwesomeIcons.dollarSign, color: Colors.green),),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
