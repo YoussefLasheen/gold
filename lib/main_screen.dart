@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 
 import 'package:timeago/timeago.dart' as timeago;
 
+import 'components/chart_card.dart';
 class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -42,10 +43,7 @@ class _MainScreenState extends State<MainScreen> {
                       const SizedBox(
                         height: 50,
                       ),
-                      Placeholder(
-                        fallbackHeight: 300,
-                        color: Colors.white,
-                      ),
+                      ChartCard(),
                       SizedBox(
                         height: 50,
                       ),
