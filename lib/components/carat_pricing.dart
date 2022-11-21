@@ -14,10 +14,9 @@ class CaratPricing extends StatelessWidget {
           children: [
             Expanded(
               flex: 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFCCA653),
-                  borderRadius: BorderRadiusDirectional.horizontal(start: Radius.circular(50))
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusDirectional.horizontal(start: Radius.circular(50), end: Radius.circular(10)),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -30,29 +29,30 @@ class CaratPricing extends StatelessWidget {
             ),
             Expanded(
               flex: 5,
-              child: Container(
-                color: Color(0xFFFFD700),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusDirectional.all(Radius.circular(10)),
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("24 قيراط", style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),),
-                    Text('${data.gold24k.toStringAsFixed(2)} جنية')
+                    Text("24 قيراط", style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold,),),
+                    Text('${data.gold24k.toStringAsFixed(2)} جنية',)
                   ],
                 ),
               ),
             ),
             Expanded(
               flex: 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFFDDB637),
-                  borderRadius: BorderRadiusDirectional.horizontal(end: Radius.circular(50))
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusDirectional.horizontal(end: Radius.circular(50), start: Radius.circular(10))
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("21 قيراط", style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text('${data.gold21k.toStringAsFixed(2)} جنية', )
+                    Text("21 قيراط", style: TextStyle(fontWeight: FontWeight.bold,)),
+                    Text('${data.gold21k.toStringAsFixed(2)} جنية')
                   ],
                 ),
               ),

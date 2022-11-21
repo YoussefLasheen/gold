@@ -27,26 +27,24 @@ class _ChartCardState extends State<ChartCard> {
       builder: (context, snapshot) {
         if(snapshot.hasData){
           return Card(
-          color: Colors.transparent,
-          elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
           child: SfCartesianChart(
             backgroundColor: Colors.transparent,
             title: ChartTitle(
               text: 'سعر أونصه الدهب بالدولار',
               textStyle: TextStyle(
-                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
             primaryXAxis: CategoryAxis(
               labelStyle: TextStyle(
-                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
             primaryYAxis: NumericAxis(
               labelStyle: TextStyle(
-                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

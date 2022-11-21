@@ -12,7 +12,6 @@ class PriceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white10,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50.0),
       ),
@@ -24,7 +23,7 @@ class PriceCard extends StatelessWidget {
           children: [
             Text(
               title,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)  ,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold)  ,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -35,9 +34,6 @@ class PriceCard extends StatelessWidget {
                 ),
                 Text(
                   '${price.toStringAsFixed(2)} جنيه',
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
                 ),
               ],
             ),

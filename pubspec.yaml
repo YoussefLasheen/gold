@@ -42,6 +42,7 @@ dependencies:
   timeago: ^3.3.0
   shared_preferences: ^2.0.15
   syncfusion_flutter_charts: ^20.3.57
+  dynamic_color: ^1.5.4
 
 dev_dependencies:
   flutter_test:

@@ -28,11 +28,9 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     timeago.setLocaleMessages('ar', timeago.ArMessages()); // Add french messages
     return Scaffold(
-      backgroundColor:const  Color(0xFF142e1a),
       floatingActionButton: FloatingActionButton.extended(
         icon: Icon(Icons.refresh),
         label: Text('تحديث'),
-        backgroundColor: Color(0xFF142e1a),
         onPressed: () {
           setState(() {
             futureAlbum = fetchRates();
@@ -74,7 +72,7 @@ class _MainScreenState extends State<MainScreen> {
                           SizedBox(
                             height: 10,
                           ),
-                          Text('تم التحديث ${timeago.format(snapshot.data!.rates.timestamp, locale: 'ar')}', style: TextStyle(color: Colors.white),),
+                          Text('تم التحديث ${timeago.format(snapshot.data!.rates.timestamp, locale: 'ar')}',),
                         ],
                       ),
                     ],
