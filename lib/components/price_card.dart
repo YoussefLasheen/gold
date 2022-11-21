@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gold/providers.dart';
 import 'package:gold/rates.dart';
 import 'package:intl/intl.dart';
 
@@ -8,8 +10,9 @@ class PriceCard extends StatelessWidget {
   final String title;
   final double price;
   final Icon icon;
+  final String currencyCode;
   const PriceCard({
-    Key? key, required this.price, required this.icon, required this.title
+    Key? key, required this.price, required this.icon, required this.title, required this.currencyCode
   }) : super(key: key);
 
   @override
@@ -35,7 +38,7 @@ class PriceCard extends StatelessWidget {
                 SizedBox(
                   width: 12,
                 ),
-                Text(NumberFormat.simpleCurrency(locale: 'ar').format(price))
+                Text(NumberFormat.simpleCurrency(name:currencyCode).format(price))
               ],
             ),
           ],

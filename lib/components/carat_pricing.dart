@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gold/providers.dart';
 import 'package:gold/rates.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,7 +9,8 @@ import 'dart:io';
 
 class CaratPricing extends StatelessWidget {
   final RatesDerivatives data;
-  const CaratPricing({super.key, required this.data});
+  final String currencyCode;
+  const CaratPricing({super.key, required this.data,required this.currencyCode, });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class CaratPricing extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(AppLocalizations.of(context)!.k18, style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text(NumberFormat.simpleCurrency(locale: 'ar').format(data.gold18k))
+                    Text(NumberFormat.simpleCurrency(name:currencyCode).format(data.gold18k))
                   ],
                 ),
               ),
@@ -41,7 +44,7 @@ class CaratPricing extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(AppLocalizations.of(context)!.k24, style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold,),),
-                    Text(NumberFormat.simpleCurrency(locale: 'ar').format(data.gold24k))
+                    Text(NumberFormat.simpleCurrency(name:currencyCode).format(data.gold24k))
                   ],
                 ),
               ),
@@ -56,7 +59,7 @@ class CaratPricing extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(AppLocalizations.of(context)!.k21, style: TextStyle(fontWeight: FontWeight.bold,)),
-                    Text(NumberFormat.simpleCurrency(locale: 'ar').format(data.gold21k))
+                    Text(NumberFormat.simpleCurrency(name:currencyCode).format(data.gold21k))
                   ],
                 ),
               ),

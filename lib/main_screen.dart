@@ -1,6 +1,5 @@
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gold/api.dart';
 import 'package:gold/rates.dart';
 import 'package:gold/settings_dialog.dart';
@@ -14,24 +13,30 @@ import 'components/price_card.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'providers.dart';
 class MainScreen extends StatefulWidget {
+  final String currencyCode;
+  const MainScreen({super.key, required this.currencyCode});
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   late Future<RatesDerivatives> futureAlbum;
-
+  
+  @override
+  void didUpdateWidget(covariant MainScreen oldWidget) {
+    futureAlbum = fetchRates(widget.currencyCode);
+    super.didUpdateWidget(oldWidget);
+  }
   @override
   void initState() {
     super.initState();
-    
-    futureAlbum = fetchRates();
+    futureAlbum = fetchRates(widget.currencyCode);
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ) {
+    //final locale = ref.watch(localeProvider);
     timeago.setLocaleMessages('ar', timeago.ArMessages()); // Add french messages
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
@@ -39,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
         label: Text(AppLocalizations.of(context)!.refresh),
         onPressed: () {
           setState(() {
-            futureAlbum = fetchRates();
+            futureAlbum = fetchRates(widget.currencyCode!);
           });
         },
       ),
@@ -86,12 +91,12 @@ class _MainScreenState extends State<MainScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          CaratPricing(data: snapshot.data!),
+                          CaratPricing(data: snapshot.data!, currencyCode: widget.currencyCode,),
                           SizedBox(height: 10,),
                           Row(
                             children: [
-                              Expanded(child: PriceCard(title: AppLocalizations.of(context)!.ouncePrice,price: snapshot.data!.XAUUSD, icon: Icon(FontAwesomeIcons.coins, color: Color(0xFFCCA653),),)),
-                              Expanded(child: PriceCard(title: AppLocalizations.of(context)!.dollarPrice,price: snapshot.data!.rates.USDEGP, icon: Icon(FontAwesomeIcons.dollarSign, color: Colors.green),)),
+                              Expanded(child: PriceCard(title: AppLocalizations.of(context)!.ouncePrice,price: snapshot.data!.XAUUSD, icon: Icon(FontAwesomeIcons.coins, color: Color(0xFFCCA653),),currencyCode: widget.currencyCode,)),
+                              Expanded(child: PriceCard(title: AppLocalizations.of(context)!.dollarPrice,price: snapshot.data!.rates.USDXXX, icon: Icon(FontAwesomeIcons.dollarSign, color: Colors.green),currencyCode: widget.currencyCode,)),
                             ],
                           ),
                           

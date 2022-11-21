@@ -9,22 +9,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
 
-Future<RatesDerivatives> fetchRates() async {
+Future<RatesDerivatives> fetchRates(String currencyCode) async {
   final prefs = await SharedPreferences.getInstance();
 
   try {
     final response = await http.get(
-        Uri.parse('https://www.freeforexapi.com/api/live?pairs=USDXAU,USDEGP'));
+        Uri.parse('https://www.freeforexapi.com/api/live?pairs=USDXAU,USD$currencyCode'));
     if (response.statusCode == 200) {
       await prefs.setString('data1', response.body);
-      Rates rates = Rates.fromJson(jsonDecode(response.body));
+      Rates rates = Rates.fromJson(jsonDecode(response.body), currencyCode);
       return RatesDerivatives.deriv(rates);
     }
   } on SocketException catch (_) {
     final String? data = prefs.getString('data1');
 
     if (data != null) {
-      Rates rates = Rates.fromJson(jsonDecode(data));
+      Rates rates = Rates.fromJson(jsonDecode(data), currencyCode);
       return RatesDerivatives.deriv(rates);
     }
   }

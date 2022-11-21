@@ -14,7 +14,7 @@ class LocaleNotifier extends StateNotifier<Locale> {
     state = locale;
   }
 
-  LocaleNotifier() : super(Locale('en_EG')) {
+  LocaleNotifier() : super(Locale('en','EGP')) {
     _init();
   }
 
