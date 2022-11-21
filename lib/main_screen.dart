@@ -29,6 +29,16 @@ class _MainScreenState extends State<MainScreen> {
     timeago.setLocaleMessages('ar', timeago.ArMessages()); // Add french messages
     return Scaffold(
       backgroundColor:const  Color(0xFF142e1a),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: Icon(Icons.refresh),
+        label: Text('تحديث'),
+        backgroundColor: Color(0xFF142e1a),
+        onPressed: () {
+          setState(() {
+            futureAlbum = fetchRates();
+          });
+        },
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: FutureBuilder<RatesDerivatives>(
@@ -64,30 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                           SizedBox(
                             height: 10,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(24.0),
-                                ),
-                                backgroundColor: Colors.green
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  futureAlbum = fetchRates();
-                                });
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: const Text('تحديث'),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text('تم التحديث ${timeago.format(snapshot.data!.rates.timestamp, locale: 'ar')}', style: TextStyle(color: Colors.white),),
-                          ),
+                          Text('تم التحديث ${timeago.format(snapshot.data!.rates.timestamp, locale: 'ar')}', style: TextStyle(color: Colors.white),),
                         ],
                       ),
                     ],
