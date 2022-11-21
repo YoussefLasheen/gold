@@ -7,7 +7,10 @@ class LocaleNotifier extends StateNotifier<Locale> {
 
   Future _init() async {
     prefs = await SharedPreferences.getInstance();
-    var locale = Locale(prefs.getString('locale') ?? 'en');
+    var locale = Locale.fromSubtags(
+      languageCode: prefs.getString('languageCode') ?? 'en',
+      countryCode: prefs.getString('countryCode') ?? 'EGP',
+    );
     state = locale;
   }
 
@@ -15,9 +18,13 @@ class LocaleNotifier extends StateNotifier<Locale> {
     _init();
   }
 
-  void change(Locale locale) async {
-    state = locale;
-    prefs.setString("locale", locale.toString());
+  void change({String? languageCode, String? countryCode}) async {
+    state = Locale.fromSubtags(
+      languageCode: languageCode??state.languageCode,
+      countryCode: countryCode??state.countryCode,
+    );
+    if(languageCode !=null)prefs.setString("languageCode", languageCode);
+    if(countryCode !=null)prefs.setString("countryCode", countryCode);
   }
 }
 
