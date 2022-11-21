@@ -1,5 +1,6 @@
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gold/api.dart';
 import 'package:gold/rates.dart';
 import 'package:intl/intl.dart';
@@ -12,6 +13,7 @@ import 'components/price_card.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'providers.dart';
 class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
