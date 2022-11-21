@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gold/rates.dart';
+import 'package:intl/intl.dart';
 
 class PriceCard extends StatelessWidget {
   final String title;
@@ -32,9 +35,7 @@ class PriceCard extends StatelessWidget {
                 SizedBox(
                   width: 12,
                 ),
-                Text(
-                  '${price.toStringAsFixed(2)} جنيه',
-                ),
+                Text(NumberFormat.simpleCurrency(locale: 'ar').format(price))
               ],
             ),
           ],

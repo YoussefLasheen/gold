@@ -1,6 +1,9 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gold/main_screen.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,10 +40,14 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
             colorScheme: darkColorScheme,
           ),
-          home: Directionality(
-            textDirection: TextDirection.rtl,
-            child: MainScreen(),
-          ),
+          supportedLocales: AppLocalizations.supportedLocales,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          home: MainScreen(),
         );
       },
     );

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gold/rates.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
+import 'dart:io';
+
 class CaratPricing extends StatelessWidget {
   final RatesDerivatives data;
   const CaratPricing({super.key, required this.data});
@@ -21,8 +25,8 @@ class CaratPricing extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("18 قيراط", style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text('${data.gold18k.toStringAsFixed(2)} جنية')
+                    Text(AppLocalizations.of(context)!.k18, style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text(NumberFormat.simpleCurrency(locale: 'ar').format(data.gold18k))
                   ],
                 ),
               ),
@@ -36,8 +40,8 @@ class CaratPricing extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("24 قيراط", style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold,),),
-                    Text('${data.gold24k.toStringAsFixed(2)} جنية',)
+                    Text(AppLocalizations.of(context)!.k24, style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold,),),
+                    Text(NumberFormat.simpleCurrency(locale: 'ar').format(data.gold24k))
                   ],
                 ),
               ),
@@ -51,8 +55,8 @@ class CaratPricing extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("21 قيراط", style: TextStyle(fontWeight: FontWeight.bold,)),
-                    Text('${data.gold21k.toStringAsFixed(2)} جنية')
+                    Text(AppLocalizations.of(context)!.k21, style: TextStyle(fontWeight: FontWeight.bold,)),
+                    Text(NumberFormat.simpleCurrency(locale: 'ar').format(data.gold21k))
                   ],
                 ),
               ),

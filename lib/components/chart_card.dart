@@ -4,6 +4,8 @@ import 'package:gold/bars.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class ChartCard extends StatefulWidget {
   const ChartCard({super.key});
 
@@ -33,7 +35,7 @@ class _ChartCardState extends State<ChartCard> {
           child: SfCartesianChart(
             backgroundColor: Colors.transparent,
             title: ChartTitle(
-              text: 'سعر أونصه الدهب بالدولار',
+              text: AppLocalizations.of(context)!.graphTitle,
               textStyle: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
