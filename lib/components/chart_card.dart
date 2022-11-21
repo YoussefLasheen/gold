@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gold/api.dart';
-import 'package:gold/bars.dart';
+import 'package:gold/models/bars.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 

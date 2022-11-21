@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gold/components/chart_card.dart';
 import 'package:gold/components/price_chips/price_chips.dart';
 
-import 'settings_dialog.dart';
+import 'components/settings_dialog.dart';
 
 class MainScreen extends StatelessWidget {
   final String currencyCode;

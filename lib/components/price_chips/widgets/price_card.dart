@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gold/providers.dart';
-import 'package:gold/rates.dart';
+import 'package:gold/models/rates.dart';
 import 'package:intl/intl.dart';
 
 class PriceCard extends StatelessWidget {

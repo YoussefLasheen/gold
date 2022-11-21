@@ -1,7 +1,7 @@
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gold/api.dart';
-import 'package:gold/rates.dart';
+import 'package:gold/models/rates.dart';
 
 import 'package:timeago/timeago.dart' as timeago;
 

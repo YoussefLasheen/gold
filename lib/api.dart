@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:gold/bars.dart';
-import 'package:gold/rates.dart';
+import 'package:gold/models/bars.dart';
+import 'package:gold/models/rates.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
