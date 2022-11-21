@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gold/api.dart';
 import 'package:gold/rates.dart';
+import 'package:gold/settings_dialog.dart';
 import 'package:intl/intl.dart';
 
 import 'package:timeago/timeago.dart' as timeago;
@@ -55,6 +56,26 @@ class _MainScreenState extends State<MainScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Column(
                     children: [
+                      Align(
+                        alignment: AlignmentDirectional.topStart,
+                        child: IconButton(
+                          icon: Icon(Icons.settings),
+                          onPressed: () {
+                            showGeneralDialog(
+                                context: context,
+                                barrierDismissible: true,
+                                barrierLabel: 'Profile',
+                                pageBuilder: (BuildContext buildContext,
+                                    Animation<double> animation,
+                                    Animation<double> secondaryAnimation) {
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: SettingsDialog(),
+                                  );
+                                });
+                          },
+                        ),
+                      ),
                       const SizedBox(
                         height: 50,
                       ),
