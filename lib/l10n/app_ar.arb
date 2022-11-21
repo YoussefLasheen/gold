@@ -6,5 +6,7 @@
     "ouncePrice":"سعر الأونصه",
     "dollarPrice":"سعر الدولار",
     "lastUpdate":"تم التحديث ",
-    "refresh":"تحديث"
+    "refresh":"تحديث",
+    "language":"اللغة",
+    "currency":"العملة"
 }

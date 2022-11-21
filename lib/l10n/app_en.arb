@@ -6,5 +6,7 @@
     "ouncePrice":"Ounce Price",
     "dollarPrice":"Dollar Price",
     "lastUpdate":"Last Updated",
-    "refresh":"Refresh"
+    "refresh":"Refresh",
+    "language":"Language",
+    "currency":"Currency"
 }
