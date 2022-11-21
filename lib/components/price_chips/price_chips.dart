@@ -88,6 +88,21 @@ class _PriceChipsState extends State<PriceChips> {
                   Text(
                     '${AppLocalizations.of(context)!.lastUpdate} ${timeago.format(snapshot.data!.rates.timestamp, locale: Localizations.localeOf(context).toLanguageTag())}',
                   ),
+                  Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: SizedBox(
+                      width: 100,
+                      child: FloatingActionButton.extended(
+                        icon: const Icon(Icons.refresh),
+                        label: Text(AppLocalizations.of(context)!.refresh),
+                        onPressed: () {
+                          setState(() {
+                            futureAlbum = fetchRates(widget.currencyCode!);
+                          });
+                        },
+                      ),
+                    ),
+                  )
                 ],
               );
             } else if (snapshot.hasError) {
