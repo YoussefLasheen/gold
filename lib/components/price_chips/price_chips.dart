@@ -65,7 +65,7 @@ class _PriceChipsState extends State<PriceChips> {
                       Expanded(
                           child: PriceCard(
                         title: AppLocalizations.of(context)!.ouncePrice,
-                        price: snapshot.data!.XAUUSD,
+                        price: snapshot.data!.XAUUSD * snapshot.data!.rates.USDXXX ,
                         icon: const Icon(
                           FontAwesomeIcons.coins,
                           color: Color(0xFFCCA653),
