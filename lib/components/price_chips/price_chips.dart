@@ -38,7 +38,9 @@ class _PriceChipsState extends State<PriceChips> {
   @override
   Widget build(BuildContext context) {
     timeago.setLocaleMessages(
-        'ar', timeago.ArMessages()); // Add french messages
+        'ar', timeago.ArMessages());
+    timeago.setLocaleMessages(
+        'zh', timeago.ZhMessages()); // Add french messages
     return Column(
       children: [
         FutureBuilder<RatesDerivatives>(
