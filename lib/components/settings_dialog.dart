@@ -10,45 +10,48 @@ class SettingsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Card(
-        child: Consumer(builder: (context, ref, child) {
-          final locale = ref.watch(localeProvider);
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                title: Text(AppLocalizations.of(context)!.language),
-                trailing: DropdownButton(
-                  value: locale.languageCode,
-                  items: AppLocalizations.supportedLocales
-                      .map((e) => DropdownMenuItem(
-                            value: e.toLanguageTag(),
-                            child: Text(e.toLanguageTag()),
-                          ))
-                      .toList(),
-                  onChanged: (value) {
-                    ref.read(localeProvider.notifier).change(languageCode: value);
-                  },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 50),
+        child: Card(
+          child: Consumer(builder: (context, ref, child) {
+            final locale = ref.watch(localeProvider);
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  title: Text(AppLocalizations.of(context)!.language),
+                  trailing: DropdownButton(
+                    value: locale.languageCode,
+                    items: AppLocalizations.supportedLocales
+                        .map((e) => DropdownMenuItem(
+                              value: e.toLanguageTag(),
+                              child: Text(e.toLanguageTag()),
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      ref.read(localeProvider.notifier).change(languageCode: value);
+                    },
+                  ),
                 ),
-              ),
-              ListTile(
-                title: Text(AppLocalizations.of(context)!.currency),
-                trailing: DropdownButton(
-                  value: locale.countryCode,
-                  items: currencies
-                      .map((e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(e),
-                          ))
-                      .toList(),
-                  onChanged: (value) {
-                    ref.read(localeProvider.notifier).change(countryCode: value);
-                  },
-                ),
-              )
-            ],
-          );
-        }),
+                ListTile(
+                  title: Text(AppLocalizations.of(context)!.currency),
+                  trailing: DropdownButton(
+                    value: locale.countryCode,
+                    items: currencies
+                        .map((e) => DropdownMenuItem(
+                              value: e,
+                              child: Text(e),
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      ref.read(localeProvider.notifier).change(countryCode: value);
+                    },
+                  ),
+                )
+              ],
+            );
+          }),
+        ),
       ),
     );
   }
