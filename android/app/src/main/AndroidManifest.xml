@@ -2,7 +2,7 @@
     package="com.example.gold">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="gold"
+        android:label="Gold Live"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
