@@ -37,9 +37,11 @@ Future<Bars> fetchBars() async {
   String fromDate = format.format(DateTime.now().subtract(Duration(days: 30)));
   final prefs = await SharedPreferences.getInstance();
 
+  String apiKey = const String.fromEnvironment('POLY_KEY');
+
   try {
     final response = await http.get(
-        Uri.parse('https://api.polygon.io/v2/aggs/ticker/C:XAUUSD/range/1/day/$fromDate/$today?adjusted=true&sort=asc&limit=120&apiKey=8oX0Yt7qqSohH4XAuqaGYDgug1txsFdT'));
+        Uri.parse('https://api.polygon.io/v2/aggs/ticker/C:XAUUSD/range/1/day/$fromDate/$today?adjusted=true&sort=asc&limit=120&apiKey=$apiKey'));
     if (response.statusCode == 200) {
       await prefs.setString('data2', response.body);
       Bars rates = Bars.fromJson(jsonDecode(response.body));
