@@ -1,16 +1,12 @@
 # gold
 
-A new Flutter project.
+A gold pprice tracker built with flutter
 
-## Getting Started
+### Privacy Policy
+This app does not collect any kind of personal data about the user.
 
-This project is a starting point for a Flutter application.
+We use multiple APIs for gathering data that might have their own privacy policy.
+These APIs have access to the device ip address and the queries that you make in the app like the currency and date you choose.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Polygon.io](https://polygon.io/privacy)
+- [freeforexapi.com](https://www.freeforexapi.com/)
