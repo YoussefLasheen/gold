@@ -11,17 +11,16 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        body: SizedBox(
+          height: MediaQuery.of(context).size.height -
+              MediaQuery.of(context).padding.top,
+          width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
                 Align(
                   alignment: AlignmentDirectional.topStart,
                   child: IconButton(
@@ -42,14 +41,11 @@ class MainScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(
-                  height: 100,
-                ),
-                const ChartCard(),
-                const SizedBox(
-                  height: 75,
-                ),
-                PriceChips(currencyCode: currencyCode),
+                const Spacer(),
+                const Expanded(flex: 3, child: ChartCard()),
+                const Spacer(),
+                Expanded(
+                    flex: 3, child: PriceChips(currencyCode: currencyCode)),
               ],
             ),
           ),
