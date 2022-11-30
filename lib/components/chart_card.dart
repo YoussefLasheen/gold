@@ -60,7 +60,7 @@ class _ChartCardState extends State<ChartCard> {
                 color: Color(0xFFFFD700),
                 width: 2,
                 dataSource: snapshot.data!.bars,
-                xValueMapper: (Bar c, i) => (DateFormat('MM/dd').format(DateTime.now().subtract(Duration(days: 30-i)))).toString(),
+                xValueMapper: (Bar c, i) => (DateFormat('MM/dd').format(DateTime.now().subtract(Duration(days: snapshot.data!.bars.length-i)))).toString(),
                 yValueMapper: (Bar c, i) => c.close,
                 animationDuration: 1500,
                 splineType: SplineType.natural,
