@@ -40,7 +40,12 @@ class _ChartCardState extends State<ChartCard> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+                zoomPanBehavior: ZoomPanBehavior(
+                    enablePinching: true,
+                    enablePanning: true,
+                    zoomMode: ZoomMode.x),
             primaryXAxis: CategoryAxis(
+              desiredIntervals:30,
               labelStyle: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
