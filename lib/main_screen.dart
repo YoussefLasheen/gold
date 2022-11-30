@@ -25,7 +25,7 @@ class MainScreen extends StatelessWidget {
                 Align(
                   alignment: AlignmentDirectional.topStart,
                   child: IconButton(
-                    icon: Icon(Icons.settings),
+                    icon: const Icon(Icons.settings),
                     onPressed: () {
                       showGeneralDialog(
                           context: context,
@@ -36,7 +36,7 @@ class MainScreen extends StatelessWidget {
                               Animation<double> secondaryAnimation) {
                             return FadeTransition(
                               opacity: animation,
-                              child: SettingsDialog(),
+                              child: const SettingsDialog(),
                             );
                           });
                     },

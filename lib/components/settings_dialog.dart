@@ -29,7 +29,9 @@ class SettingsDialog extends StatelessWidget {
                             ))
                         .toList(),
                     onChanged: (value) {
-                      ref.read(localeProvider.notifier).change(languageCode: value);
+                      ref
+                          .read(localeProvider.notifier)
+                          .change(languageCode: value);
                     },
                   ),
                 ),
@@ -44,7 +46,9 @@ class SettingsDialog extends StatelessWidget {
                             ))
                         .toList(),
                     onChanged: (value) {
-                      ref.read(localeProvider.notifier).change(countryCode: value);
+                      ref
+                          .read(localeProvider.notifier)
+                          .change(countryCode: value);
                     },
                   ),
                 )

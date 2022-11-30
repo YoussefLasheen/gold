@@ -10,7 +10,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'widgets/carat_pricing.dart';
 import 'widgets/price_card.dart';
 
-
 class PriceChips extends StatefulWidget {
   final String currencyCode;
 
@@ -37,8 +36,7 @@ class _PriceChipsState extends State<PriceChips> {
 
   @override
   Widget build(BuildContext context) {
-    timeago.setLocaleMessages(
-        'ar', timeago.ArMessages());
+    timeago.setLocaleMessages('ar', timeago.ArMessages());
     timeago.setLocaleMessages(
         'zh', timeago.ZhMessages()); // Add french messages
     return Column(
@@ -65,7 +63,8 @@ class _PriceChipsState extends State<PriceChips> {
                       Expanded(
                           child: PriceCard(
                         title: AppLocalizations.of(context)!.ouncePrice,
-                        price: snapshot.data!.XAUUSD * snapshot.data!.rates.USDXXX ,
+                        price:
+                            snapshot.data!.XAUUSD * snapshot.data!.rates.USDXXX,
                         icon: const Icon(
                           FontAwesomeIcons.coins,
                           color: Color(0xFFCCA653),
@@ -97,7 +96,7 @@ class _PriceChipsState extends State<PriceChips> {
                         label: Text(AppLocalizations.of(context)!.refresh),
                         onPressed: () {
                           setState(() {
-                            futureAlbum = fetchRates(widget.currencyCode!);
+                            futureAlbum = fetchRates(widget.currencyCode);
                           });
                         },
                       ),

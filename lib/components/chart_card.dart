@@ -19,58 +19,61 @@ class _ChartCardState extends State<ChartCard> {
   @override
   void initState() {
     super.initState();
-    
+
     futureAlbum = fetchBars();
   }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Bars>(
-      future: futureAlbum,
-      builder: (context, snapshot) {
-        if(snapshot.hasData){
-          return Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-          child: SfCartesianChart(
-            backgroundColor: Colors.transparent,
-            title: ChartTitle(
-              text: AppLocalizations.of(context)!.graphTitle,
-              textStyle: TextStyle(
-                fontWeight: FontWeight.bold,
+        future: futureAlbum,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
               ),
-            ),
+              child: SfCartesianChart(
+                backgroundColor: Colors.transparent,
+                title: ChartTitle(
+                  text: AppLocalizations.of(context)!.graphTitle,
+                  textStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 zoomPanBehavior: ZoomPanBehavior(
                     enablePinching: true,
                     enablePanning: true,
                     zoomMode: ZoomMode.x),
-            primaryXAxis: CategoryAxis(
-              desiredIntervals:30,
-              labelStyle: TextStyle(
-                fontWeight: FontWeight.bold,
+                primaryXAxis: CategoryAxis(
+                  desiredIntervals: 30,
+                  labelStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                primaryYAxis: NumericAxis(
+                  labelStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                series: <ChartSeries<Bar, String>>[
+                  SplineSeries(
+                    color: const Color(0xFFFFD700),
+                    width: 2,
+                    dataSource: snapshot.data!.bars,
+                    xValueMapper: (Bar c, i) => (DateFormat('MM/dd').format(
+                            DateTime.now().subtract(Duration(
+                                days: snapshot.data!.bars.length - i))))
+                        .toString(),
+                    yValueMapper: (Bar c, i) => c.close,
+                    animationDuration: 1500,
+                    splineType: SplineType.natural,
+                  ),
+                ],
               ),
-            ),
-            primaryYAxis: NumericAxis(
-              labelStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            series: <ChartSeries<Bar, String>>[
-              SplineSeries(
-                color: Color(0xFFFFD700),
-                width: 2,
-                dataSource: snapshot.data!.bars,
-                xValueMapper: (Bar c, i) => (DateFormat('MM/dd').format(DateTime.now().subtract(Duration(days: snapshot.data!.bars.length-i)))).toString(),
-                yValueMapper: (Bar c, i) => c.close,
-                animationDuration: 1500,
-                splineType: SplineType.natural,
-              ),
-            ],
-          ),
-        );
-        
-        }return Container();
-      }
-    );
+            );
+          }
+          return Container();
+        });
   }
 }

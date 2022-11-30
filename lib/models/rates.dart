@@ -13,7 +13,8 @@ class Rates {
     return Rates(
       USDXAU: json['rates']['USDXAU']['rate'].toDouble(),
       USDXXX: json['rates']["USD$currencyCode"]['rate'].toDouble(),
-      timestamp: DateTime.fromMillisecondsSinceEpoch(json['rates']['USDXAU']['timestamp']*1000),
+      timestamp: DateTime.fromMillisecondsSinceEpoch(
+          json['rates']['USDXAU']['timestamp'] * 1000),
     );
   }
 }
@@ -33,7 +34,8 @@ class RatesDerivatives {
       required this.XAUUSD});
 
   factory RatesDerivatives.deriv(Rates rates, double multiplier) {
-    double gold24 = (((1 / rates.USDXAU) / 31.1034768) * rates.USDXXX)* multiplier;
+    double gold24 =
+        (((1 / rates.USDXAU) / 31.1034768) * rates.USDXXX) * multiplier;
     return RatesDerivatives(
         gold18k: gold24 * 0.75,
         gold21k: gold24 * 0.875,

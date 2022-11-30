@@ -14,17 +14,17 @@ class LocaleNotifier extends StateNotifier<Locale> {
     state = locale;
   }
 
-  LocaleNotifier() : super(Locale('en','EGP')) {
+  LocaleNotifier() : super(const Locale('en', 'EGP')) {
     _init();
   }
 
   void change({String? languageCode, String? countryCode}) async {
     state = Locale.fromSubtags(
-      languageCode: languageCode??state.languageCode,
-      countryCode: countryCode??state.countryCode,
+      languageCode: languageCode ?? state.languageCode,
+      countryCode: countryCode ?? state.countryCode,
     );
-    if(languageCode !=null)prefs.setString("languageCode", languageCode);
-    if(countryCode !=null)prefs.setString("countryCode", countryCode);
+    if (languageCode != null) prefs.setString("languageCode", languageCode);
+    if (countryCode != null) prefs.setString("countryCode", countryCode);
   }
 }
 

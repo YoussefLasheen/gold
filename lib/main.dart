@@ -9,7 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'providers.dart';
 
 void main() {
-  runApp(const ProviderScope(child:  MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         ColorScheme lightColorScheme;
 
         darkColorScheme = ColorScheme.fromSeed(
-          seedColor: Color(0xFF1C6758),
+          seedColor: const Color(0xFF1C6758),
           brightness: Brightness.dark,
         );
 
@@ -33,31 +33,31 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         );
 
-        return Consumer(
-          builder: (context, ref, _) {
-            final locale = ref.watch(localeProvider);
-            return MaterialApp(
-              themeMode: ThemeMode.dark,
-              theme: ThemeData(
-                useMaterial3: true,
-                colorScheme: lightColorScheme,
-              ),
-              darkTheme: ThemeData(
-                useMaterial3: true,
-                colorScheme: darkColorScheme,
-              ),
-              locale: locale,
-              supportedLocales: AppLocalizations.supportedLocales,
-              localizationsDelegates: const [
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              home: MainScreen(currencyCode: locale.countryCode!,),
-            );
-          }
-        );
+        return Consumer(builder: (context, ref, _) {
+          final locale = ref.watch(localeProvider);
+          return MaterialApp(
+            themeMode: ThemeMode.dark,
+            theme: ThemeData(
+              useMaterial3: true,
+              colorScheme: lightColorScheme,
+            ),
+            darkTheme: ThemeData(
+              useMaterial3: true,
+              colorScheme: darkColorScheme,
+            ),
+            locale: locale,
+            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            home: MainScreen(
+              currencyCode: locale.countryCode!,
+            ),
+          );
+        });
       },
     );
   }
