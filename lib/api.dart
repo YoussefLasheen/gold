@@ -18,14 +18,14 @@ Future<RatesDerivatives> fetchRates(String currencyCode) async {
     if (response.statusCode == 200) {
       await prefs.setString('data1', response.body);
       Rates rates = Rates.fromJson(jsonDecode(response.body), currencyCode);
-      return RatesDerivatives.deriv(rates);
+      return RatesDerivatives.deriv(rates, multipliers[currencyCode]??0);
     }
   } on SocketException catch (_) {
     final String? data = prefs.getString('data1');
 
     if (data != null) {
       Rates rates = Rates.fromJson(jsonDecode(data), currencyCode);
-      return RatesDerivatives.deriv(rates);
+      return RatesDerivatives.deriv(rates, multipliers[currencyCode]??0);
     }
   }
   throw Exception('Failed to load album');

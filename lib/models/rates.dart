@@ -32,8 +32,8 @@ class RatesDerivatives {
       required this.gold24k,
       required this.XAUUSD});
 
-  factory RatesDerivatives.deriv(Rates rates) {
-    double gold24 = (((1 / rates.USDXAU) / 31.1034768) * rates.USDXXX)* 1.05;
+  factory RatesDerivatives.deriv(Rates rates, double multiplier) {
+    double gold24 = (((1 / rates.USDXAU) / 31.1034768) * rates.USDXXX)* multiplier;
     return RatesDerivatives(
         gold18k: gold24 * 0.75,
         gold21k: gold24 * 0.875,
