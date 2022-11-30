@@ -73,7 +73,9 @@ class _ChartCardState extends State<ChartCard> {
               ),
             );
           }
-          return Container();
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         });
   }
 }
